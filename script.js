@@ -32,8 +32,31 @@ const lookup = {
 };
 
 function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
+   // Your Result goes here
   // Only change code below this line
+	let encrypted = "";
+    
+    // Run loop through string
+    for(let i = 0; i < s.length; i++) {
+        // get character
+        const char = s[i];
+        
+        if (char.match(/[a-zA-Z]/)) {
+            // check if upper case or lower case
+            const isUpperCase = char === char.toUpperCase();
+            // get base of charCode
+            const base = isUpperCase ? "A".charCodeAt() : "a".charCodeAt();
+            // Calculate shift. Ex: (x(120) - a(base: 97) + 4) % 26 = 1
+            const shift = (char.charCodeAt() - base + k) % 26;
+            // find shift char a(base: 97) + shift(1) = 98
+            const shiftedChar = String.fromCharCode(base + shift);
+            
+            // return
+            encrypted += shiftedChar;
+        } else {
+            // return if not char
+            encrypted += char;
+        }
 
   return; //return decodedArr
 }
